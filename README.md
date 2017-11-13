@@ -16,4 +16,4 @@ for($i=0;$i<10;$i++){
 
 ```
 
-The class automatically removes the temporary file as soon as there are no other references to a particular object, or in any order during the shutdown sequence.
+The class automatically removes the temporary file as soon as there are no other references to the cancel_by_file object.
