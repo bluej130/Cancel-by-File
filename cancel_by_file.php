@@ -35,28 +35,21 @@ class cancel_by_file {
      */
     function name_update($name){
         $this->check(); // first check
-        $this->file_remove($this->file_name);
+        unlink(sys_get_temp_dir()."/$this->file_name");
         $this->init($name);
     }
     
     private function init($name){
         $this->file_name = $this->name_format($name);
-        $this->file_add($this->file_name);
+        file_put_contents(sys_get_temp_dir()."/$this->file_name",'run');
     }
     
     private function name_format($name){
         return $this->file_name = "php_".date("YmdHis")."_$name";
     }
     
-    private function file_remove($name){
-        unlink(sys_get_temp_dir()."/$name");
-    }
-    private function file_add($name){
-        file_put_contents(sys_get_temp_dir()."/$name",'run');
-    }
-    
     function __destruct() {
-        $this->file_remove($this->file_name);
+        unlink(sys_get_temp_dir()."/$this->file_name");
     }
     
 }
